@@ -1,0 +1,36 @@
+https://codeforces.com/contest/158/problem/B
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int count[] = new int[4];
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i=0;i<n;i++){
+            arr[i] = sc.nextInt();
+            count[arr[i]-1]++;
+        }
+        if(count[2]==count[0]){
+            count[3] += count[2];
+            count[3] += count[1]/2;
+            count[3] += count[1]%2;
+        }else if(count[2]>count[0]){
+            count[3] += count[0];
+            count[3] += count[2]-count[0];
+            count[3] += count[1]/2;
+            count[3] += count[1]%2;
+        }else if(count[0]>count[2]){
+            count[3] += count[2];
+            count[0] = count[0] - count[2];
+            int sum = count[0] + count[1]*2;
+            
+            count[3] += sum/4;
+            if(sum%4>0){
+                count[3]++;
+            }
+        }
+        System.out.println(count[3]);
+        
+    }
+}
