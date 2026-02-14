@@ -1,0 +1,24 @@
+https://codeforces.com/problemset/problem/466/A
+
+import java.util.Scanner;
+ 
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+ 
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+ 
+        int cost1 = n * a; // only single tickets
+        int cost2 = ((n + m - 1) / m) * b; // only m-ride tickets
+        int cost3 = (n / m) * b + (n % m) * a; // combination
+ 
+        int result = Math.min(cost1, Math.min(cost2, cost3));
+ 
+        System.out.println(result);
+        
+        sc.close();
+    }
+}
