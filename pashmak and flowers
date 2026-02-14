@@ -1,0 +1,35 @@
+https://codeforces.com/problemset/problem/459/B
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        long arr[] = new long[n];
+        for(int i=0;i<n;i++){
+            arr[i] = sc.nextLong();
+        }
+        Arrays.sort(arr);
+        long diff = arr[arr.length-1]-arr[0];
+        long c1 = 1;
+        long c2 = 1;
+        int i=1;
+        while(i<arr.length-1 && arr[i]==arr[0]){
+            c1++;
+            i++;
+        }
+        i = arr.length-2;
+        while(i>=1 && arr[i]==arr[arr.length-1]){
+            c2++;
+            i--;
+        }
+        long prod = c1*c2;
+        long prod2 = ((long)n*(n-1))/2;
+        if(diff!=0){
+            System.out.println(diff+" "+ prod);
+        }else{
+            System.out.println(diff+" "+prod2);
+        }
+        
+    }
+}
