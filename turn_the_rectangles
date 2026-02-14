@@ -1,0 +1,31 @@
+https://codeforces.com/contest/1008/problem/B
+
+import java.util.*;
+ 
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+ 
+        long prevHeight = Long.MAX_VALUE;
+ 
+        for (int i = 0; i < n; i++) {
+            long w = sc.nextLong();
+            long h = sc.nextLong();
+ 
+            long big = Math.max(w, h);
+            long small = Math.min(w, h);
+ 
+            if (big <= prevHeight) {
+                prevHeight = big;
+            } else if (small <= prevHeight) {
+                prevHeight = small;
+            } else {
+                System.out.println("NO");
+                return;
+            }
+        }
+ 
+        System.out.println("YES");
+    }
+}
