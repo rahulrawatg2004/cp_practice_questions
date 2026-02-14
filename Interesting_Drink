@@ -1,0 +1,49 @@
+https://codeforces.com/contest/706/problem/B
+
+import java.util.*;
+public class Main {
+   static int upperBound(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length;  // notice: not length-1
+ 
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+ 
+            if (arr[mid] <= target) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+ 
+        return left;  // number of elements <= target
+    }
+ 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i=0;i<n;i++){
+            arr[i] = sc.nextInt();
+        }
+        int q = sc.nextInt();
+        int qrr[] = new int[q];
+        for(int i=0;i<q;i++){
+            qrr[i] = sc.nextInt();
+        }
+        
+        Arrays.sort(arr);
+        
+        for(int i=0;i<q;i++){
+            int price = qrr[i];
+            int idx = upperBound(arr,price);
+            System.out.println(idx);
+            
+        }
+        
+        
+        
+        
+    }
+}
+
